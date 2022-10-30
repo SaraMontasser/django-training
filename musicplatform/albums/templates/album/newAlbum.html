@@ -1,6 +1,8 @@
 <form method="post">
     {% csrf_token %}
     <div style="color: red;">{{form.errors}}</div>
-    {{ form.as_p }}
+    {% for data in form %}
+        <div>{{data.label_tag}} {{data}}</div>
+    {% endfor %}
     <input type="submit" value="Submit">
 </form>
