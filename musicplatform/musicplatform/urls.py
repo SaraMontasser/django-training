@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from albums import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('albums/create', views.get_album_form,name="album"),
 ]
