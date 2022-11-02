@@ -1,13 +1,13 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from .form import new_album
+from .form import AlbumForm
 
 def get_album_form(request):
     if request.method == 'POST':
-        form = new_album(request.POST)
+        form = AlbumForm(request.POST)
         if form.is_valid():
             form.save()
     else:
-        form = new_album()
+        form = AlbumForm()
     return render(request, 'album\\newAlbum.html', {'form': form})
