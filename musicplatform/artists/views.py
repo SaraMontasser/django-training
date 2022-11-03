@@ -1,16 +1,27 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views import View
 from artists.models import Artist
 from .form import ArtistForm
 
-def get_artist_form(request):
-    if request.method == 'POST':
-        form = ArtistForm(request.POST)
+class get_artist_form(View):
+    form_class = ArtistForm
+    template_name = 'artist\\newArtist.html'
+
+    def get(self, request):
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-    else:
-        form = ArtistForm()
-    return render(request, 'artist\\newArtist.html', {'form': form})
+        return render(request, self.template_name, {'form': form})
 
-def get_all_artist(request):
-    return render(request, 'artist\\displayArtists.html', {'Artist': Artist.objects.prefetch_related('album_set')})
+
+class get_all_artist(View):
+    query_set = Artist.objects.prefetch_related('album_set')
+    template_name = 'artist\\displayArtists.html'
+
+    def get(self, request):
+        return render(request, self.template_name, {'query_set': self.query_set})
