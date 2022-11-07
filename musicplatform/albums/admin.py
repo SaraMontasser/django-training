@@ -1,5 +1,5 @@
 from django.contrib import admin
-from albums.models import Album
+from albums.models import Album,Song
 
 # Register your models here.
 
@@ -8,3 +8,4 @@ class AlbumAdmin(admin.ModelAdmin):
     readonly_fields = ['created']
 
 admin.site.register(Album,AlbumAdmin)
+admin.site.register(Song)
