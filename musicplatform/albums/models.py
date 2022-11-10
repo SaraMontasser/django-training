@@ -19,10 +19,10 @@ class Album(TimeStampedModel):
 
 class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200,default=Album.name)
-    image=models.ImageField(upload_to='images', blank=False)
+    name = models.CharField(max_length=200,default=album.name)
+    image=models.ImageField(upload_to='media', blank=False)
     image_thumbnail=ImageSpecField(source='image', format='JPEG', processors=[ResizeToFill(100, 50)], options={'quality': 60})
-    audio_file = models.FileField(upload_to="images",blank=False,validators=[FileExtensionValidator(['mp3', 'wav'])])
+    audio_file = models.FileField(upload_to="media",blank=False,validators=[FileExtensionValidator(['mp3', 'wav'])])
 
 
     def delete(self):
