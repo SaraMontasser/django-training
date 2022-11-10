@@ -13,7 +13,7 @@ class Album(TimeStampedModel):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
     is_approved=models.BooleanField(default=False,help_text='Approve the album if its name is not explicit')
     def __str__(self):
-        return(" name: "+self.name+" creation date and time: "+self.creation_datetime.strftime("%m/%d/%Y, %H:%M:%S")+" release date and time: "+self.creation_datetime.strftime("%m/%d/%Y, %H:%M:%S")+" cost: "+str(self.cost))
+        return(" name: "+self.name+" creation date and time: "+self.created.strftime("%m/%d/%Y, %H:%M:%S")+" release date and time: "+self.release_datetime.strftime("%m/%d/%Y, %H:%M:%S")+" cost: "+str(self.cost))
 
 
 
