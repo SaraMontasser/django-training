@@ -1,0 +1,17 @@
+<div>
+    {% csrf_token %}
+    {% for i in query_set %}
+    <div>Artist: </div>
+    <div>ID: {{i.id}}</div>
+    <div>Stage Name: {{i.Stage_name}}</div>
+    <div>Social Link: {{i.Social_link}}</div>
+    <div>Albums: </div>
+        {% for j in i.album_set.all %}
+        <div>ID: {{j.id}}</div>
+        <div>Name: {{j.name}}</div>
+        <div>Creation datetime: {{j.created}}</div>
+        <div>Release datetime: {{j.release_datetime}}</div>
+        <div>Cost: {{j.cost}}</div>
+        {%endfor%}
+    {% endfor %}
+</div>
