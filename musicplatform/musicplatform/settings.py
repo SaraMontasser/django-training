@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'albums.apps.AlbumsConfig',
     'artists.apps.ArtistsConfig',
     'users.apps.UsersConfig',
+    'authentication.apps.AuthenticationConfig',
     'imagekit',
     'rest_framework',
 ]
