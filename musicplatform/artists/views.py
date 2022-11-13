@@ -33,7 +33,7 @@ class get_all_artist(View):
 
 class get_artist(APIView):
 
-    def get(self):
+    def get(self, request):
         Artists = Artist.objects.all()
         serializer = ArtistSerializer(Artists, many=True)
         return JsonResponse(serializer.data, safe=False)

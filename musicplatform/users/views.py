@@ -9,7 +9,7 @@ from rest_framework.authentication import TokenAuthentication
 # Create your views here.
 class GetUser (APIView):
     authentication_classes = [TokenAuthentication] 
-    def get(self, pk):
+    def get(self, request, pk):
         user = get_object_or_404(User, id=pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
