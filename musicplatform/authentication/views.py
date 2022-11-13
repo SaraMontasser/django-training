@@ -2,10 +2,10 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 from authentication.serializers import RegisterSerializer
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
 from knox.models import AuthToken
 # Create your views here.
 
@@ -36,3 +36,11 @@ class Login(APIView):
                 "bio":  user.bio
             },
         })
+
+
+class Logout(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        request.user.auth_token.delete()
+        logout(request)
+        return Response('User Logged out successfully')
