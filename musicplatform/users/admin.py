@@ -6,7 +6,6 @@ from django.contrib.auth.forms import UserCreationForm
 # Register your models here.
 
 class UserForm(UserCreationForm):
-    # bio = forms.CharField( widget=forms.Textarea )
     class Meta(UserCreationForm.Meta):
         model = User
         fields = UserCreationForm.Meta.fields

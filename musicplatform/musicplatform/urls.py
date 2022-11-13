@@ -22,4 +22,5 @@ urlpatterns = [
     path('albums/', include('albums.urls')),
     path('artists/', include('artists.urls')),
     path('authentication/', include('authentication.urls')),
+    path('users/', include('users.urls')),
 ]
