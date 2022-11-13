@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'imagekit',
     'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
